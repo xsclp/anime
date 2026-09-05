@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Scene Finder</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #ff6b9d, #c44dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: transform .2s, border-color .2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #c44dff;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      color: #ff6b9d;
+      margin-bottom: .4rem;
+    }
+    .card p {
+      font-size: .9rem;
+      color: #aaa;
+      line-height: 1.5;
+      margin-bottom: .8rem;
+    }
+    .card a {
+      display: inline-block;
+      padding: .4rem 1rem;
+      background: linear-gradient(90deg, #ff6b9d, #c44dff);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .tag {
+      display: inline-block;
+      font-size: .7rem;
+      padding: .15rem .5rem;
+      border-radius: 4px;
+      background: #2a2a4a;
+      color: #c44dff;
+      margin-right: .3rem;
+      margin-bottom: .5rem;
+    }
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    .search-box input {
+      width: 100%;
+      padding: .8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+    .search-box input:focus {
+      border-color: #c44dff;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>⚡ Anime Scene Finder</h1>
+  <p class="subtitle">Free resources for finding, identifying & downloading anime scenes</p>
+
+  <div class="search-box">
+    <input type="text" id="filter" placeholder="Filter by name or tag…" oninput="filterCards()">
+  </div>
+
+  <div class="grid" id="cards">
+    <div class="card" data-tags="identify search screenshot episode">
+      <span class="tag">identify</span><span class="tag">search</span>
+      <h2>trace.moe</h2>
+      <p>Upload a screenshot to get the exact episode and timestamp. The gold standard for "which episode is this from?"</p>
+      <a href="https://trace.moe" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-tags="clips amv editing raw no-watermark">
+      <span class="tag">clips</span><span class="tag">editing</span><span class="tag">raw</span>
+      <h2>AnimeClips.online</h2>
+      <p>450,000+ pre-cut clips in original framerate. No watermark, no login. Perfect for AMVs.</p>
+      <a href="https://animeclips.online" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-tags="sakuga high-quality animation">
+      <span class="tag">sakuga</span><span class="tag">high-quality</span>
+      <h2>SakugaBooru</h2>
+      <p>Tagged database of high-quality animation sequences. Filter by action, character, studio, or technique.</p>
+      <a href="https://sakugabooru.com" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-tags="torrent 4k blu-ray raw">
+      <span class="tag">torrent</span><span class="tag">4k</span><span class="tag">raw</span>
+      <h2>Nyaa.si</h2>
+      <p>Torrent aggregator with the highest quality rips (4K, Blu-ray). Best for complex editing projects.</p>
+      <a href="https://nyaa.si" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-tags="free commercial-use stock video">
+      <span class="tag">free</span><span class="tag">commercial-use</span>
+      <h2>Pixabay – Anime</h2>
+      <p>7,000+ free HD & 4K anime-style videos. Safe for commercial use, no attribution required.</p>
+      <a href="https://pixabay.com/videos/search/anime/" target="_blank">Visit →</a>
+    </div>
+
+    <div class="card" data-tags="social-media vertical 4k flow">
+      <span class="tag">social-media</span><span class="tag">4k</span><span class="tag">vertical</span>
+      <h2>Ringwitdaclips</h2>
+      <p>Curated vertical & horizontal 4K clips with flow frames. Built for TikTok/Reels/Shorts edits.</p>
+      <a href="https://ringwitdaclips.com" target="_blank">Visit →</a>
+    </div>
+  </div>
+
+  <script>
+    function filterCards() {
+      const q = document.getElementById('filter').value.toLowerCase();
+      document.querySelectorAll('.card').forEach(c => {
+        const text = c.textContent.toLowerCase();
+        c.classList.toggle('hidden', !text.includes(q));
+      });
+    }
+  </script>
+</body>
+</html>   
